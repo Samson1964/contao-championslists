@@ -1,0 +1,31 @@
+<div class="ce_championslists block">
+	<?php if ($this->headline): ?>
+		<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+	<?php endif; ?> 
+	<table class="championslist_team">
+		<tr>
+			<th>Nr.</th>
+			<th>Jahr</th>
+			<th>Ort</th>
+			<th>Sieger</th>
+			<th>Aufstellung</th>
+		</tr>
+	<?php foreach($this->item as $item): ?>
+		<tr class="item <?php echo $item['class']; ?>">
+			<?php if($item['number']): ?>
+				<td class="nummer"><?php echo $item['number'].'.'; ?></td>
+			<?php else: ?>
+				<td class="nummer"></td>
+			<?php endif; ?>
+			<?php if($item['url']): ?>
+				<td class="jahr"><a href="<?php echo $item['url']; ?>"><?php echo $item['year']; ?></a></td>
+			<?php else: ?>
+				<td class="jahr"><?php echo $item['year']; ?></td>
+			<?php endif; ?>
+			<td class="ort"><?php echo $item['place']; ?></td>
+			<td class="name"><?php echo $item['name']; ?></td>
+			<td class="aufstellung"><?php echo $item['nomination']; ?></td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+</div> 
