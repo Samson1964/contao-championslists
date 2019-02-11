@@ -43,6 +43,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 		'sorting' => array
 		(
 			'mode'                    => 4,
+			'disableGrouping'         => true,
 			'fields'                  => array('year DESC'),
 			'headerFields'            => array('title', 'templatefile'),
 			'panelLayout'             => 'filter;sort,search,limit',
@@ -291,7 +292,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 				'mandatory'           => false, 
 				'multiple'            => false, 
 				'chosen'              => true,
-				'submitOnChange'      => true,
+				'submitOnChange'      => false,
 				'tl_class'            => 'long'
 			),
 			'sql'                     => "int(10) unsigned NOT NULL default '0'" 
@@ -344,9 +345,12 @@ class tl_championslists_items extends Backend
 
 	public function listPersons($arrRow)
 	{
-		$temp = '<div class="tl_content_left">'.$arrRow['place'];
-		if($arrRow['year']) $temp .= ' '.$arrRow['year'];
-		if($arrRow['name']) $temp .= ': '.$arrRow['name'];
+		$temp = '<div class="tl_content_left"><b>'.$arrRow['year'].'</b> ';
+		if($arrRow['number']) $temp .= '['.$arrRow['number'].'] ';
+		if($arrRow['place']) $temp .= $arrRow['place'].' - ';
+		if($arrRow['name']) $temp .= '1. <b style="color:#007500">'.$arrRow['name'].'</b> ';
+		if($arrRow['name2']) $temp .= '2. <b>'.$arrRow['name2'].'</b> ';
+		if($arrRow['name3']) $temp .= '3. <b>'.$arrRow['name3'].'</b>';
 		return $temp.'</div>';
 	}
 
