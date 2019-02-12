@@ -37,6 +37,10 @@ class ChampionslistClass extends \ContentElement
 		// Adresse aus Datenbank laden, wenn ID übergeben wurde
 		if($this->championslist)
 		{
+			// Voreinstellungen laden
+			$picWidthPlayer = $this->championslists_picWidthPlayer ? $this->championslists_picWidthPlayer : $GLOBALS['TL_CONFIG']['championslists_picWidthPlayer'];
+			$picHeightPlayer = $this->championslists_picHeightPlayer ? $this->championslists_picHeightPlayer : $GLOBALS['TL_CONFIG']['championslists_picHeightPlayer'];
+
 			// Listentitel laden
 			$objListe = $this->Database->prepare("SELECT * FROM tl_championslists WHERE id=?")
 			                           ->execute($this->championslist);
@@ -82,7 +86,7 @@ class ChampionslistClass extends \ContentElement
 					{
 						(bcmod($i,2)) ? $item[$i]['class'] = 'odd' : $item[$i]['class'] = 'even';
 						$item[$i]['number'] = $objItems->number;
-						$item[$i]['year'] = $objItems->year;
+						$item[$i]['year'] = $objItems->year.$picHeightPlayer;
 						$item[$i]['place'] = $objItems->place;
 						$item[$i]['url'] = $objItems->url;
 						$item[$i]['target'] = $objItems->target;
@@ -97,7 +101,7 @@ class ChampionslistClass extends \ContentElement
 						{
 							$objFile = \FilesModel::findByPk($objItems->singleSRC);
 							$item[$i]['image'] = $objFile->path;
-							$item[$i]['thumbnail'] = Image::get($objFile->path, 70, 70, 'crop');
+							$item[$i]['thumbnail'] = \Image::get($objFile->path, $picWidthPlayer, $picHeightPlayer, 'crop');
 						}
 						else $item[$i]['image'] = '';
 						$item[$i]['info'] = $objItems->info;

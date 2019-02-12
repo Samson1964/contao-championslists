@@ -11,18 +11,7 @@
  * @copyright Frank Hoppe 2014
  */
 
-/**
- * Backend-Bereich DSB anlegen, wenn noch nicht vorhanden
- */
-if(!$GLOBALS['BE_MOD']['dsb']) 
-{
-	$dsb = array(
-		'dsb' => array()
-	);
-	array_insert($GLOBALS['BE_MOD'], 0, $dsb);
-}
-
-$GLOBALS['BE_MOD']['dsb']['championslists'] = array
+$GLOBALS['BE_MOD']['content']['championslists'] = array
 (
 	'tables'         => array('tl_championslists', 'tl_championslists_items'),
 	'icon'           => 'system/modules/championslists/assets/images/icon.png',
@@ -34,6 +23,17 @@ $GLOBALS['BE_MOD']['dsb']['championslists'] = array
  * -------------------------------------------------------------------------
  */
 $GLOBALS['TL_CTE']['schach']['championslists'] = 'ChampionslistClass';
+
+/**
+ * -------------------------------------------------------------------------
+ * Voreinstellungen
+ * -------------------------------------------------------------------------
+ */
+
+$GLOBALS['TL_CONFIG']['championslists_picWidthPlayer'] = 60;
+$GLOBALS['TL_CONFIG']['championslists_picHeightPlayer'] = 80;
+$GLOBALS['TL_CONFIG']['championslists_picWidthTeam'] = 100;
+$GLOBALS['TL_CONFIG']['championslists_picHeightTeam'] = 60;
 
 // Konfiguration für ProSearch
 $GLOBALS['PS_SEARCHABLE_MODULES']['championslists'] = array(
