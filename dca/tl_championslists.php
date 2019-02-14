@@ -188,7 +188,9 @@ class tl_championslists extends Backend
 
 	public function getTemplates($dc)
 	{
-		return $this->getTemplateGroup('mod_championslists_', $dc->activeRecord->id);
+		$arr1 = $this->getTemplateGroup('mod_championslists_', $dc->activeRecord->id);
+		$arr2 = $this->getTemplateGroup('ce_championslists_', $dc->activeRecord->id);
+		return array_merge($arr1, $arr2);
 	} 
 
 	/**
