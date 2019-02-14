@@ -166,18 +166,16 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'inputType'               => 'text',
 			'eval'                    => array
 			(
+				'mandatory'           => true,
 				'rgxp'                => 'url',
 				'decodeEntities'      => true,
 				'maxlength'           => 255,
-				'fieldType'           => 'radio',
-				'tl_class'            => 'clr w50 wizard'
-			),
-			'wizard' => array
-			(
-				array('tl_championslists_items', 'pagePicker')
+				'dcaPicker'           => true,
+				'addWizardClass'      => false,
+				'tl_class'            => 'w50 clr'
 			),
 			'sql'                     => "varchar(255) NOT NULL default ''"
-		),
+		), 
 		'target' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['target'],
