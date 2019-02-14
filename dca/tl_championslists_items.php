@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info'
+		'default'                     => '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info;{publish_legend},published'
 	),
 
 	// Fields
@@ -151,7 +151,11 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'sorting'                 => true,
 			'flag'                    => 1,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+			'eval'                    => array
+			(
+				'maxlength'           => 255,
+				'tl_class'            => 'w50'
+			),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'url' => array
@@ -160,7 +164,14 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'fieldType'=>'radio', 'tl_class'=>'clr w50 wizard'),
+			'eval'                    => array
+			(
+				'rgxp'                => 'url',
+				'decodeEntities'      => true,
+				'maxlength'           => 255,
+				'fieldType'           => 'radio',
+				'tl_class'            => 'clr w50 wizard'
+			),
 			'wizard' => array
 			(
 				array('tl_championslists_items', 'pagePicker')
@@ -172,7 +183,10 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['target'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
-			'eval'                    => array('tl_class'=>'w50 m12'),
+			'eval'                    => array
+			(
+				'tl_class'            => 'w50 m12'
+			),
 			'sql'                     => "char(1) NOT NULL default ''"
 		), 
 		'name' => array
@@ -183,7 +197,11 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'sorting'                 => true,
 			'flag'                    => 1,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+			'eval'                    => array
+			(
+				'maxlength'           => 255,
+				'tl_class'            => 'w50'
+			),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'age' => array
@@ -191,7 +209,12 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['age'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'digit', 'tl_class'=>'w50', 'maxlength'=>5),
+			'eval'                    => array
+			(
+				'rgxp'                => 'digit',
+				'tl_class'            => 'w50',
+				'maxlength'           => 5
+			),
 			'sql'                     => "varchar(5) NOT NULL default ''"
 		), 
 		'clubrating' => array
@@ -201,7 +224,11 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'search'                  => true,
 			'flag'                    => 1,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+			'eval'                    => array
+			(
+				'maxlength'           => 255,
+				'tl_class'            => 'w50'
+			),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'cowinner' => array
@@ -209,7 +236,10 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['cowinner'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
-			'eval'                    => array('tl_class'=>'w50 m12'),
+			'eval'                    => array
+			(
+				'tl_class'            => 'w50 m12'
+			),
 			'sql'                     => "char(1) NOT NULL default ''"
 		), 
 		'singleSRC' => array
@@ -250,7 +280,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'inputType'               => 'textarea',
 			'eval'                    => array
 			(
-				'class'               => 'clr noresize',
+				'tl_class'            => 'clr noresize',
 			),
 			'explanation'             => 'insertTags',
 			'sql'                     => "mediumtext NULL"
@@ -263,7 +293,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'inputType'               => 'textarea',
 			'eval'                    => array
 			(
-				'class'               => 'clr noresize',
+				'tl_class'            => 'clr noresize',
 			),
 			'explanation'             => 'insertTags',
 			'sql'                     => "mediumtext NULL"
@@ -276,7 +306,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'inputType'               => 'textarea',
 			'eval'                    => array
 			(
-				'class'               => 'clr noresize',
+				'tl_class'            => 'clr noresize',
 			),
 			'explanation'             => 'insertTags',
 			'sql'                     => "mediumtext NULL"
@@ -307,6 +337,20 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'explanation'             => 'insertTags',
 			'sql'                     => "mediumtext NULL"
 		), 
+		'published' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['published'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'flag'                    => 1,
+			'default'                 => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array
+			(
+				'doNotCopy'           => true
+			),
+			'sql'                     => "char(1) NOT NULL default ''"
+		),
 	)
 );
 
@@ -332,6 +376,69 @@ class tl_championslists_items extends Backend
 		parent::__construct();
 		$this->import('BackendUser', 'User');
 	}
+
+	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+	{
+		$this->import('BackendUser', 'User');
+
+		if (strlen($this->Input->get('tid')))
+		{
+			$this->toggleVisibility($this->Input->get('tid'), ($this->Input->get('state') == 0));
+			$this->redirect($this->getReferer());
+		}
+
+		// Check permissions AFTER checking the tid, so hacking attempts are logged
+		if (!$this->User->isAdmin && !$this->User->hasAccess('tl_championslists_items::published', 'alexf'))
+		{
+			return '';
+		}
+
+		$href .= '&amp;id='.$this->Input->get('id').'&amp;tid='.$row['id'].'&amp;state='.$row[''];
+
+		if (!$row['published'])
+		{
+			$icon = 'invisible.gif';
+		}
+
+		return '<a href="'.$this->addToUrl($href).'" title="'.specialchars($title).'"'.$attributes.'>'.$this->generateImage($icon, $label).'</a> ';
+	}
+
+	public function toggleVisibility($intId, $blnPublished)
+	{
+		// Check permissions to publish
+		if (!$this->User->isAdmin && !$this->User->hasAccess('tl_championslists_items::published', 'alexf'))
+		{
+			$this->log('Kein Zugriffsrecht für Aktivierung Datensatz ID "'.$intId.'"', 'tl_championslists_items toggleVisibility', TL_ERROR);
+			// Zurücklink generieren, ab C4 ist das ein symbolischer Link zu "contao"
+			if (version_compare(VERSION, '4.0', '>='))
+			{
+				$backlink = \System::getContainer()->get('router')->generate('contao_backend');
+			}
+			else
+			{
+				$backlink = 'contao/main.php';
+			}
+			$this->redirect($backlink.'?act=error');
+		}
+		
+		$this->createInitialVersion('tl_championslists_items', $intId);
+		
+		// Trigger the save_callback
+		if (is_array($GLOBALS['TL_DCA']['tl_championslists_items']['fields']['published']['save_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA']['tl_championslists_items']['fields']['published']['save_callback'] as $callback)
+			{
+				$this->import($callback[0]);
+				$blnPublished = $this->$callback[0]->$callback[1]($blnPublished, $this);
+			}
+		}
+		
+		// Update the database
+		$this->Database->prepare("UPDATE tl_championslists_items SET tstamp=". time() .", published='" . ($blnPublished ? '' : '1') . "' WHERE id=?")
+		               ->execute($intId);
+		$this->createNewVersion('tl_championslists_items', $intId);
+	}
+
 
 	/**
 	 * Return the link picker wizard
@@ -372,14 +479,14 @@ class tl_championslists_items extends Backend
 		switch($objListe->typ)
 		{
 			case 'M': // Mannschaftsturnier
-				$palette = '{place_legend},year,number,place,url,target;{club_legend},name,nomination,singleSRC;{extra_legend},name2,nomination2,name3,nomination3;{info_legend},info';
+				$palette = '{place_legend},year,number,place,url,target;{club_legend},name,nomination,singleSRC;{extra_legend},name2,nomination2,name3,nomination3;{info_legend},info;{publish_legend},published';
 				$GLOBALS['TL_LANG']['tl_championslists_items']['name'][1] = 'Name der Sieger-Mannschaft';
 				$GLOBALS['TL_LANG']['tl_championslists_items']['name2'][1] = 'Name der Mannschaft auf Platz 2';
 				$GLOBALS['TL_LANG']['tl_championslists_items']['name3'][1] = 'Name der Mannschaft auf Platz 3';
 				break;
 			case 'E': // Einzelturnier
 			default:
-				$palette = '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3;{info_legend},info';
+				$palette = '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3;{info_legend},info;{publish_legend},published';
 		}
 		
 		// Palette zuweisen

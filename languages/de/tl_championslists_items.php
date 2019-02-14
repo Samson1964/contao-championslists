@@ -60,3 +60,6 @@ $GLOBALS['TL_LANG']['tl_championslists_items']['nomination'][1] = 'Aufstellung d
 $GLOBALS['TL_LANG']['tl_championslists_items']['info_legend'] = 'Information';
 $GLOBALS['TL_LANG']['tl_championslists_items']['info'][0] = 'Information';
 $GLOBALS['TL_LANG']['tl_championslists_items']['info'][1] = 'Information zur Veranstaltung';
+
+$GLOBALS['TL_LANG']['tl_championslists_items']['publish_legend'] = 'Veröffentlichung';
+$GLOBALS['TL_LANG']['tl_championslists_items']['published'] = array('Veröffentlichen', 'Eintrag veröffentlichen');
