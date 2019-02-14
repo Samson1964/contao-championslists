@@ -7,6 +7,13 @@
  *
  */
 
+/**
+ * Register the namespaces
+ */
+ClassLoader::addNamespaces(array
+(
+	'Samson',
+));
 
 /**
  * Register the classes
