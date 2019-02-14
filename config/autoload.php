@@ -15,7 +15,6 @@ ClassLoader::addClasses(array
 (
 	// Classes
 	'ChampionslistClass'    => 'system/modules/championslists/classes/Championslist.php',
-	//'chesstournament'          => 'system/modules/championslists/classes/chesstournament_ce.php',
 ));
 
 /**
@@ -29,4 +28,5 @@ TemplateLoader::addFiles(array
 	'mod_championslists_team'            => 'system/modules/championslists/templates',
 	'mod_championslists_einzeltest'      => 'system/modules/championslists/templates',
 	'ce_championslists_players'          => 'system/modules/championslists/templates',
+	'ce_championslists_teams'            => 'system/modules/championslists/templates',
 )); 
