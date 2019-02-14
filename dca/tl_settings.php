@@ -14,7 +14,7 @@
 /**
  * palettes
  */
-$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{championslists_legend:hide},championslists_picWidthPlayer,championslists_picHeightPlayer,championslists_picWidthTeam,championslists_picHeightTeam';
+$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{championslists_legend:hide},championslists_picWidthPlayer,championslists_picHeightPlayer,championslists_picWidthTeam,championslists_picHeightTeam,championslists_css';
 
 /**
  * fields
@@ -61,5 +61,15 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['championslists_picHeightTeam'] = ar
 	(
 		'tl_class'  => 'w50',
 		'rgxp'      => 'digit'
+	)
+);
+
+$GLOBALS['TL_DCA']['tl_settings']['fields']['championslists_css'] = array
+(
+	'label'         => &$GLOBALS['TL_LANG']['tl_settings']['championslists_css'],
+	'inputType'     => 'checkbox',
+	'eval'          => array
+	(
+		'tl_class'  => 'w50',
 	)
 );
