@@ -29,7 +29,7 @@ $GLOBALS['TL_DCA']['tl_championslists'] = array
 			'keys' => array
 			(
 				'id'    => 'primary',
-				'alias' => 'index'
+				'title' => 'index'
 			)
 		)
 	),
@@ -64,7 +64,7 @@ $GLOBALS['TL_DCA']['tl_championslists'] = array
 			'edit' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_championslists']['edit'],
-				'href'                => 'table=tl_championslists',
+				'href'                => 'table=tl_championslists_items',
 				'icon'                => 'edit.gif'
 			),
 			'editheader' => array

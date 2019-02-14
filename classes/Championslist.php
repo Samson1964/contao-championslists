@@ -17,19 +17,29 @@ class ChampionslistClass extends \ContentElement
 		// Adresse aus Datenbank laden, wenn ID übergeben wurde
 		if($this->championslist)
 		{
-			// Voreinstellungen laden
-			$picWidthPlayer = $this->championslists_picWidthPlayer ? $this->championslists_picWidthPlayer : $GLOBALS['TL_CONFIG']['championslists_picWidthPlayer'];
-			$picHeightPlayer = $this->championslists_picHeightPlayer ? $this->championslists_picHeightPlayer : $GLOBALS['TL_CONFIG']['championslists_picHeightPlayer'];
-
-			// Standard-CSS optional einbinden
-			if($GLOBALS['TL_CONFIG']['championslists_css']) $GLOBALS['TL_CSS']['championslists'] = 'system/modules/championslists/assets/default.css';
-			
 			// Listentitel laden
 			$objListe = $this->Database->prepare("SELECT * FROM tl_championslists WHERE id=?")
 			                           ->execute($this->championslist);
+
 			// Liste gefunden
 			if($objListe)
 			{
+
+				// Voreinstellungen Bilder laden
+				if($objListe->typ == 'E')
+				{
+					$picWidth = $this->championslists_picWidthPlayer ? $this->championslists_picWidthPlayer : $GLOBALS['TL_CONFIG']['championslists_picWidthPlayer'];
+					$picHeight = $this->championslists_picHeightPlayer ? $this->championslists_picHeightPlayer : $GLOBALS['TL_CONFIG']['championslists_picHeightPlayer'];
+				}
+				elseif($objListe->typ == 'M')
+				{
+					$picWidth = $this->championslists_picWidthTeam ? $this->championslists_picWidthTeam : $GLOBALS['TL_CONFIG']['championslists_picWidthTeam'];
+					$picHeight = $this->championslists_picHeightTeam ? $this->championslists_picHeightTeam : $GLOBALS['TL_CONFIG']['championslists_picHeightTeam'];
+				}
+
+				// Standard-CSS optional einbinden
+				if($GLOBALS['TL_CONFIG']['championslists_css']) $GLOBALS['TL_CSS']['championslists'] = 'system/modules/championslists/assets/default.css';
+
 				// Template zuweisen (überschreibt IMMER $strTemplate)
 				if($this->championslist_alttemplate) // Alternativ-Template im CE wurde definiert
 					$this->Template = new \FrontendTemplate($this->championslist_alttemplate);
@@ -79,6 +89,8 @@ class ChampionslistClass extends \ContentElement
 						$item[$i]['name2'] = $objItems->name2;
 						$item[$i]['name3'] = $objItems->name3;
 						$item[$i]['nomination'] = $objItems->nomination;
+						$item[$i]['nomination2'] = $objItems->nomination2;
+						$item[$i]['nomination3'] = $objItems->nomination3;
 						$item[$i]['age'] = $objItems->age;
 						$item[$i]['clubrating'] = $objItems->clubrating;
 						// Bild extrahieren
@@ -86,7 +98,7 @@ class ChampionslistClass extends \ContentElement
 						{
 							$objFile = \FilesModel::findByPk($objItems->singleSRC);
 							$item[$i]['image'] = $objFile->path;
-							$item[$i]['thumbnail'] = \Image::get($objFile->path, $picWidthPlayer, $picHeightPlayer, 'crop');
+							$item[$i]['thumbnail'] = \Image::get($objFile->path, $picWidth, $picHeight, 'crop');
 						}
 						else $item[$i]['image'] = '';
 						$item[$i]['info'] = $objItems->info;
