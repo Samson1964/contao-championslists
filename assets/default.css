@@ -2,45 +2,46 @@
 	margin-bottom   : 20px;
 }
 
-.ce_championslists .player_header {
+.ce_championslists .player_header, .ce_championslists .team_header {
 	margin-bottom   : 5px;
 	padding         : 5px;
-	background-color: #5A56A9;
-	border          : 1px solid #bababa;
+	background-color: #400080;
+	border          : 1px solid #646464;
 	border-radius   : 3px;
 	font-weight     : bold;
-	color           : #fff;
+	color           : #FFFFff;
 	display         : flex;
 	transition      : all 0.1s ease-in-out;
 }
 
-.ce_championslists .player_header:hover {
-	background-color: #174d99;
+.ce_championslists .player_header:hover, .ce_championslists .team_header:hover {
+	background-color: #0000D2;
 }
 
-.ce_championslists .player_header .col1 {
-	width           : 10%;
+.ce_championslists .player_header .col1, .ce_championslists .team_header .col1 {
+	width           : 15%;
 }
 
-.ce_championslists .player_content {
+.ce_championslists .player_content, .ce_championslists .team_content {
 	padding         : 5px;
 	border-bottom   : 1px solid #bababa;
 	display         : flex;
 	transition      : all 0.1s ease-in-out;
 }
 
-.ce_championslists .player_content:hover {
+.ce_championslists .player_content:hover, .ce_championslists .team_content:hover {
 	background-color: #e8e8e8;
 }
 
-.ce_championslists .player_content .year {
-	width           : 10%;
+.ce_championslists .player_content .year, .ce_championslists .team_content .year {
+	width           : 15%;
 	font-weight     : bold;
+	white-space     : nowrap;
 }
 
-.ce_championslists .player_content .year .number {
+.ce_championslists .player_content .year .number, .ce_championslists .team_content .year .number {
 	font-weight     : normal;
-	margin-right    : 3px;
+	margin-left     : 3px;
 }
 
 .ce_championslists .player_content .image {
@@ -48,19 +49,31 @@
 	margin-top      : 7px;
 }
 
-.ce_championslists .player_content .image img {
+.ce_championslists .team_content .image {
+	width           : 20%;
+	margin-top      : 7px;
+}
+
+.ce_championslists .player_content .image img, .ce_championslists .team_content .image img {
 	width           : 100%;
 	height          : auto;
 }
 
 .ce_championslists .player_content .infobox {
-	width           : 80%;
+	width           : 75%;
 	padding-left    : 5px;
 	display         : flex;
 	flex-direction  : column;
 }
 
-.ce_championslists .player_content .infobox .name {
+.ce_championslists .team_content .infobox {
+	width           : 65%;
+	padding-left    : 5px;
+	display         : flex;
+	flex-direction  : column;
+}
+
+.ce_championslists .player_content .infobox .name, .ce_championslists .team_content .infobox .name {
 	font-weight     : bold;
 }
 
@@ -69,16 +82,18 @@
 	color           : #000000;
 }
 
-.ce_championslists .player_content .infobox .description {
+.ce_championslists .player_content .infobox .description, .ce_championslists .team_content .infobox .nomination {
 	font-size       : 15px;
 	font-style      : italic;
 	color           : #575757;
 }
 
-.ce_championslists .player_content .infobox .description p:first-child {
+.ce_championslists .player_content .infobox .description p:first-child,
+.ce_championslists .team_content .infobox .nomination p:first-child {
 	margin-top      : 0px;
 }
 
-.ce_championslists .player_content .infobox .description p:last-child {
+.ce_championslists .player_content .infobox .description p:last-child,
+.ce_championslists .team_content .infobox .nomination p:last-child {
 	margin-bottom   : 0px;
 }
