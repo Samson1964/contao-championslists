@@ -23,5 +23,6 @@ $GLOBALS['TL_LANG']['tl_settings']['championslists_picWidthPlayer'] = array('Bil
 $GLOBALS['TL_LANG']['tl_settings']['championslists_picHeightPlayer'] = array('Bildhöhe Spieler', 'Höhe des Vorschaubildes in px für Spieler');
 $GLOBALS['TL_LANG']['tl_settings']['championslists_picWidthTeam'] = array('Bildbreite Mannschaft', 'Breite des Vorschaubildes in px für Mannschaften');
 $GLOBALS['TL_LANG']['tl_settings']['championslists_picHeightTeam'] = array('Bildhöhe Mannschaft', 'Höhe des Vorschaubildes in px für Mannschaften');
+$GLOBALS['TL_LANG']['tl_settings']['championslists_css'] = array('Standard-CSS', 'Standard-CSS einbinden');
 
 ?>
