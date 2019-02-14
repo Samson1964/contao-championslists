@@ -40,7 +40,7 @@ $GLOBALS['TL_DCA']['tl_championslists'] = array
 		'sorting' => array
 		(
 			'mode'                    => 1,
-			'fields'                  => array('alias'),
+			'fields'                  => array('title'),
 			'flag'                    => 1,
 			'panelLayout'             => 'filter;search,limit'
 		),
@@ -101,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_championslists'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},title,alias;{options_legend},typ;{template_legend},templatefile;{publish_legend},published'
+		'default'                     => '{title_legend},title;{options_legend},typ;{template_legend},templatefile;{publish_legend},published'
 	),
 
 	// Fields
@@ -124,19 +124,6 @@ $GLOBALS['TL_DCA']['tl_championslists'] = array
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
-		'alias' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists']['alias'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'alias', 'unique'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
-			'save_callback' => array
-			(
-				array('tl_championslists', 'generateAlias')
-			),
-			'sql'                     => "varbinary(128) NOT NULL default ''"
-		), 
 		'typ' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists']['typ'],
@@ -250,41 +237,5 @@ class tl_championslists extends Backend
 	{
 		return ($this->User->isAdmin || $this->User->hasAccess('delete', 'newp')) ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.gif$/i', '_.gif', $icon)).' ';
 	}
-
-	/**
-	 * Generiert automatisch ein Alias aus dem Titel
-	 * @param mixed
-	 * @param \DataContainer
-	 * @return string
-	 * @throws \Exception
-	 */
-	public function generateAlias($varValue, DataContainer $dc)
-	{
-		$autoAlias = false;
-
-		// Generate alias if there is none
-		if ($varValue == '')
-		{
-			$autoAlias = true;
-			$varValue = standardize(\StringUtil::restoreBasicEntities($dc->activeRecord->title));
-		}
-
-		$objAlias = $this->Database->prepare("SELECT id FROM tl_championslists WHERE alias=?")
-								   ->execute($varValue);
-
-		// Check whether the news alias exists
-		if ($objAlias->numRows > 1 && !$autoAlias)
-		{
-			throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
-		}
-
-		// Add ID to alias
-		if ($objAlias->numRows && $autoAlias)
-		{
-			$varValue .= '-' . $dc->id;
-		}
-
-		return $varValue;
-	} 
 
 }
