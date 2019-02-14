@@ -73,12 +73,12 @@ class ChampionslistClass extends \ContentElement
 						$bis = $this->championsfrom;
 					}
 					// Abfrage starten
-					$objItems = $this->Database->prepare("SELECT * FROM tl_championslists_items WHERE pid=? AND year >= $von AND year <= $bis ORDER BY year $order")
-				                               ->execute($this->championslist);
+					$objItems = $this->Database->prepare("SELECT * FROM tl_championslists_items WHERE pid=? AND year >= ? AND year <= ? AND published = ? ORDER BY year $order")
+				                               ->execute($this->championslist, $von, $bis, 1);
 				}
 				else // Keine Filterung
-					$objItems = $this->Database->prepare("SELECT * FROM tl_championslists_items WHERE pid=? ORDER BY year DESC")
-				                               ->execute($this->championslist);
+					$objItems = $this->Database->prepare("SELECT * FROM tl_championslists_items WHERE pid = ? AND published = ? ORDER BY year DESC")
+				                               ->execute($this->championslist, 1);
 				if($objItems)
 				{
 					$i = 0;

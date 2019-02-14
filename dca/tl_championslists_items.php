@@ -91,6 +91,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 				'label'               => &$GLOBALS['TL_LANG']['tl_championslists_items']['toggle'],
 				'icon'                => 'visible.gif',
 				'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
+				'button_callback'     => array('tl_championslists_items', 'toggleIcon')
 			),
 			'show' => array
 			(
@@ -166,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			'inputType'               => 'text',
 			'eval'                    => array
 			(
-				'mandatory'           => true,
+				'mandatory'           => false,
 				'rgxp'                => 'url',
 				'decodeEntities'      => true,
 				'maxlength'           => 255,

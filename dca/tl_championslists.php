@@ -94,6 +94,7 @@ $GLOBALS['TL_DCA']['tl_championslists'] = array
 				'label'               => &$GLOBALS['TL_LANG']['tl_championslists']['toggle'],
 				'icon'                => 'visible.gif',
 				'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
+				'button_callback'     => array('tl_championslists', 'toggleIcon')
 			),
 			'show' => array
 			(
