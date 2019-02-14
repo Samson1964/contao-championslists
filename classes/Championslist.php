@@ -14,7 +14,7 @@ class ChampionslistClass extends \ContentElement
 	 */
 	protected function compile()
 	{
-		// Adresse aus Datenbank laden, wenn ID übergeben wurde
+		// Adresse aus Datenbank laden, wenn ID Ã¼bergeben wurde
 		if($this->championslist)
 		{
 			// Voreinstellungen laden
@@ -30,19 +30,19 @@ class ChampionslistClass extends \ContentElement
 			// Liste gefunden
 			if($objListe)
 			{
-				// Template zuweisen
-				//if($this->championslist_alttemplate) // Alternativ-Template wurde definiert
-					//$this->Template = new \FrontendTemplate($this->championstemplate);
-				//else // Kein Alternativ-Template, dann Standard-Template nehmen
-					//$this->Template = $objListe->templatefile ? new \FrontendTemplate($objListe->templatefile) : new \FrontendTemplate($this->strTemplate);
+				// Template zuweisen (Ã¼berschreibt IMMER $strTemplate)
+				if($this->championslist_alttemplate) // Alternativ-Template im CE wurde definiert
+					$this->Template = new \FrontendTemplate($this->championslist_alttemplate);
+				elseif($objListe->templatefile) // Template fÃ¼r diese Liste
+					$this->Template = new \FrontendTemplate($objListe->templatefile);
 
 				// Restliche Variablen zuweisen
 				$this->Template->id = $this->championslist;
 				$this->Template->vorlage = $objListe->templatefile;
 				$this->Template->title = $objListe->title;
 
-				// Listeneinträge laden
-				if($this->championslist_filter) // Filterung nach Jahren gewünscht
+				// ListeneintrÃ¤ge laden
+				if($this->championslist_filter) // Filterung nach Jahren gewÃ¼nscht
 				{
 					// Sortierung festlegen
 					($this->championsfrom < $this->championsto) ? $order = 'ASC' : $order = 'DESC';
