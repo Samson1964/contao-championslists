@@ -98,6 +98,7 @@ class ChampionslistClass extends \ContentElement
 						$item[$i]['nomination3'] = $objItems->nomination3;
 						$item[$i]['age'] = $objItems->age;
 						$item[$i]['clubrating'] = $objItems->clubrating;
+						$item[$i]['playerbase_url'] = $objItems->spielerregister_id ? \Samson\Playerbase\Helper::getPlayerlink($objItems->spielerregister_id) : false;
 						// Bild extrahieren
 						if($objItems->singleSRC)
 						{

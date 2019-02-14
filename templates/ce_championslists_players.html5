@@ -22,7 +22,7 @@
 		</div>
 		<div class="infobox">
 			<div class="name">
-				<?= $item['name'] ?>
+				<?php if ($item['playerbase_url']): ?><a href="<?= $item['playerbase_url'] ?>"><?php endif; ?><?= $item['name'] ?><?php if ($item['playerbase_url']): ?></a><?php endif; ?>
 				<?php if($item['age']): ?><span class="age">(<?= $item['age'] ?>)</span><?php endif; ?>
 			</div>
 			<div class="clubrating"><?= $item['clubrating'] ?></div>
