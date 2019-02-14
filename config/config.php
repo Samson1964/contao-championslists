@@ -22,7 +22,7 @@ $GLOBALS['BE_MOD']['content']['championslists'] = array
  * CONTENT ELEMENTS
  * -------------------------------------------------------------------------
  */
-$GLOBALS['TL_CTE']['schach']['championslists'] = 'ChampionslistClass';
+$GLOBALS['TL_CTE']['schach']['championslists'] = 'Samson\Championslists\ChampionslistClass';
 
 /**
  * -------------------------------------------------------------------------

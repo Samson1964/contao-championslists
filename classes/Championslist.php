@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Benutzerdefinierten Namespace festlegen, damit die Klasse ersetzt werden kann
+ */
+namespace Samson\Championslists;
+
 class ChampionslistClass extends \ContentElement
 {
 
