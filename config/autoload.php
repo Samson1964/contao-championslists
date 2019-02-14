@@ -28,4 +28,5 @@ TemplateLoader::addFiles(array
 	'mod_championslists_einzel_weiblich' => 'system/modules/championslists/templates',
 	'mod_championslists_team'            => 'system/modules/championslists/templates',
 	'mod_championslists_einzeltest'      => 'system/modules/championslists/templates',
+	'ce_championslists_players'          => 'system/modules/championslists/templates',
 )); 
