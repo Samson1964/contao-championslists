@@ -7,28 +7,8 @@ class ChampionslistClass extends \ContentElement
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = 'mod_championslists_einzel';
+	protected $strTemplate = 'ce_championslists_players';
 
-	public function generate()
-	{
-		if (TL_MODE == 'BE')
-		{
-			/** @var \BackendTemplate|object $objTemplate */
-			$objTemplate = new \BackendTemplate('be_wildcard');
-
-			$objTemplate->wildcard = '### MEISTERLISTE ###';
-			$objTemplate->id = $this->id;
-			$objTemplate->title = $this->title;
-			$objTemplate->id = $this->id;
-			$objTemplate->link = $this->name;
-			$objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id; 
-			
-			return $objTemplate->parse();
-		}
-
-		return parent::generate();
-	} 
-	
 	/**
 	 * Generate the module
 	 */
@@ -41,6 +21,9 @@ class ChampionslistClass extends \ContentElement
 			$picWidthPlayer = $this->championslists_picWidthPlayer ? $this->championslists_picWidthPlayer : $GLOBALS['TL_CONFIG']['championslists_picWidthPlayer'];
 			$picHeightPlayer = $this->championslists_picHeightPlayer ? $this->championslists_picHeightPlayer : $GLOBALS['TL_CONFIG']['championslists_picHeightPlayer'];
 
+			// Standard-CSS optional einbinden
+			if($GLOBALS['TL_CONFIG']['championslists_css']) $GLOBALS['TL_CSS']['championslists'] = 'system/modules/championslists/assets/default.css';
+			
 			// Listentitel laden
 			$objListe = $this->Database->prepare("SELECT * FROM tl_championslists WHERE id=?")
 			                           ->execute($this->championslist);
@@ -48,14 +31,16 @@ class ChampionslistClass extends \ContentElement
 			if($objListe)
 			{
 				// Template zuweisen
-				if($this->championslist_alttemplate) // Alternativ-Template wurde definiert
-					$this->Template = new FrontendTemplate($this->championstemplate);
-				else // Kein Alternativ-Template, dann Standard-Template nehmen
-					($objListe->templatefile) ? $this->Template = new FrontendTemplate($objListe->templatefile) : $this->Template = new FrontendTemplate($this->strTemplate);
+				//if($this->championslist_alttemplate) // Alternativ-Template wurde definiert
+					//$this->Template = new \FrontendTemplate($this->championstemplate);
+				//else // Kein Alternativ-Template, dann Standard-Template nehmen
+					//$this->Template = $objListe->templatefile ? new \FrontendTemplate($objListe->templatefile) : new \FrontendTemplate($this->strTemplate);
+
 				// Restliche Variablen zuweisen
 				$this->Template->id = $this->championslist;
 				$this->Template->vorlage = $objListe->templatefile;
 				$this->Template->title = $objListe->title;
+
 				// Listeneinträge laden
 				if($this->championslist_filter) // Filterung nach Jahren gewünscht
 				{
@@ -86,7 +71,7 @@ class ChampionslistClass extends \ContentElement
 					{
 						(bcmod($i,2)) ? $item[$i]['class'] = 'odd' : $item[$i]['class'] = 'even';
 						$item[$i]['number'] = $objItems->number;
-						$item[$i]['year'] = $objItems->year.$picHeightPlayer;
+						$item[$i]['year'] = $objItems->year;
 						$item[$i]['place'] = $objItems->place;
 						$item[$i]['url'] = $objItems->url;
 						$item[$i]['target'] = $objItems->target;
@@ -107,7 +92,7 @@ class ChampionslistClass extends \ContentElement
 						$item[$i]['info'] = $objItems->info;
 						$i++;
 					}
-					$this->Template->item = $item;
+					$this->Template->items = $item;
 				}
 			}
 		}
@@ -115,4 +100,3 @@ class ChampionslistClass extends \ContentElement
 
 	}
 }
-?>
