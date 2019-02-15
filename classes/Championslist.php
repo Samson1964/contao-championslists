@@ -114,6 +114,29 @@ class ChampionslistClass extends \ContentElement
 							//\Image::setZoomLevel(100);
 							$item[$i]['thumbnail'] = \Image::get($objFile->path, $picWidth, $picHeight, 'crop');
 							//$item[$i]['thumbnail'] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT.'/'. $objFile->path, (new ResizeConfiguration())->setWidth(320)->setHeight(40)->setMode(ResizeConfiguration::MODE_BOX)->setZoomLevel(100))->getUrl(TL_ROOT), '', 'style="margin:0 0 2px 0;vertical-align:bottom"'); 
+							//$item[$i]['thumbnail'] = \Image::get($objFile->path, $picWidth, $picHeight, 'crop')->setZoomLevel(100);
+
+// New syntax
+//$container = \System::getContainer();
+//$rootDir = $container->getParameter('kernel.project_dir');
+//
+//echo "<pre>";
+//print_r($rootDir);
+//print_r($objFile->path);
+//echo "</pre>";
+//$item[$i]['thumbnail'] = $container
+//    ->get('contao.image.image_factory')
+//    ->create(
+//        $rootDir.'/'.$objFile->path,
+//        (new ResizeConfiguration())
+//            ->setWidth(30)
+//            ->setHeight(20)
+//            ->setMode(ResizeConfiguration::MODE_BOX)
+//            ->setZoomLevel(100)
+//    )
+//    ->getUrl($rootDir)
+//;
+
 						}
 						else $item[$i]['image'] = '';
 						$item[$i]['info'] = $objItems->info;
