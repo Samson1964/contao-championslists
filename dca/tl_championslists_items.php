@@ -105,7 +105,7 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info;{publish_legend},published'
+		'default'                     => '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,dwz,elo,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info;{publish_legend},published'
 	),
 
 	// Fields
@@ -230,6 +230,32 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 			),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
+		'dwz' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['dwz'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array
+			(
+				'rgxp'                => 'digit',
+				'tl_class'            => 'w50 clr',
+				'maxlength'           => 4
+			),
+			'sql'                     => "varchar(4) NOT NULL default ''"
+		), 
+		'elo' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['elo'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array
+			(
+				'rgxp'                => 'digit',
+				'tl_class'            => 'w50',
+				'maxlength'           => 4
+			),
+			'sql'                     => "varchar(4) NOT NULL default ''"
+		), 
 		'cowinner' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_championslists_items']['cowinner'],
@@ -485,7 +511,7 @@ class tl_championslists_items extends Backend
 				break;
 			case 'E': // Einzelturnier
 			default:
-				$palette = '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3;{info_legend},info;{publish_legend},published';
+				$palette = '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,dwz,elo,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info;{publish_legend},published';
 		}
 		
 		// Palette zuweisen

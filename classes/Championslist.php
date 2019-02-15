@@ -5,6 +5,8 @@
  */
 namespace Samson\Championslists;
 
+use Contao\Image\ResizeConfiguration;
+
 class ChampionslistClass extends \ContentElement
 {
 
@@ -97,14 +99,21 @@ class ChampionslistClass extends \ContentElement
 						$item[$i]['nomination2'] = $objItems->nomination2;
 						$item[$i]['nomination3'] = $objItems->nomination3;
 						$item[$i]['age'] = $objItems->age;
-						$item[$i]['clubrating'] = $objItems->clubrating;
+						$item[$i]['club'] = $objItems->clubrating;
+						$item[$i]['elo'] = $objItems->elo;
+						$item[$i]['dwz'] = $objItems->dwz;
 						$item[$i]['playerbase_url'] = $objItems->spielerregister_id ? \Samson\Playerbase\Helper::getPlayerlink($objItems->spielerregister_id) : false;
 						// Bild extrahieren
 						if($objItems->singleSRC)
 						{
 							$objFile = \FilesModel::findByPk($objItems->singleSRC);
 							$item[$i]['image'] = $objFile->path;
+							//$imageObj = new \Image($objFile);
+							//$imageObj->setZoomLevel(100);
+							//$item[$i]['thumbnail'] = $imageObj->get($objFile->path, $picWidth, $picHeight, 'crop');
+							//\Image::setZoomLevel(100);
 							$item[$i]['thumbnail'] = \Image::get($objFile->path, $picWidth, $picHeight, 'crop');
+							//$item[$i]['thumbnail'] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT.'/'. $objFile->path, (new ResizeConfiguration())->setWidth(320)->setHeight(40)->setMode(ResizeConfiguration::MODE_BOX)->setZoomLevel(100))->getUrl(TL_ROOT), '', 'style="margin:0 0 2px 0;vertical-align:bottom"'); 
 						}
 						else $item[$i]['image'] = '';
 						$item[$i]['info'] = $objItems->info;
