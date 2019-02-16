@@ -105,7 +105,9 @@ $GLOBALS['TL_DCA']['tl_championslists_items'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,dwz,elo,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info;{publish_legend},published'
+		'default'                     => '',
+		'championslists_player'       => '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,dwz,elo,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3;{info_legend},info;{publish_legend},published',
+		'championslists_team'         => '{place_legend},year,number,place,url,target;{club_legend},name,nomination,singleSRC;{extra_legend},name2,nomination2,name3,nomination3;{info_legend},info;{publish_legend},published'
 	),
 
 	// Fields
@@ -504,16 +506,16 @@ class tl_championslists_items extends Backend
 		switch($objListe->typ)
 		{
 			case 'M': // Mannschaftsturnier
-				$palette = '{place_legend},year,number,place,url,target;{club_legend},name,nomination,singleSRC;{extra_legend},name2,nomination2,name3,nomination3;{info_legend},info;{publish_legend},published';
+				$palette = $GLOBALS['TL_DCA']['tl_championslists_items']['palettes']['championslists_team'];
 				$GLOBALS['TL_LANG']['tl_championslists_items']['name'][1] = 'Name der Sieger-Mannschaft';
 				$GLOBALS['TL_LANG']['tl_championslists_items']['name2'][1] = 'Name der Mannschaft auf Platz 2';
 				$GLOBALS['TL_LANG']['tl_championslists_items']['name3'][1] = 'Name der Mannschaft auf Platz 3';
 				break;
 			case 'E': // Einzelturnier
 			default:
-				$palette = '{place_legend},year,number,place,url,target;{person_legend},name,age,clubrating,dwz,elo,cowinner,singleSRC;{register_legend},spielerregister_id;{extra_legend},name2,name3,nomination;{info_legend},info;{publish_legend},published';
+				$palette = $GLOBALS['TL_DCA']['tl_championslists_items']['palettes']['championslists_player'];
 		}
-		
+
 		// Palette zuweisen
 		$GLOBALS['TL_DCA']['tl_championslists_items']['palettes']['default'] = $palette;
 
